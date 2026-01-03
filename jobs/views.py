@@ -842,7 +842,7 @@ def chat_room_view(request, conversation_id):
     return render(request, 'employer/chat_room.html', {
         'conversations': conversations,
         'conversation': room,
-        'chat_history': chat_messages,  # Renamed from 'messages'
+        'chat_history': chat_messages,  # This matches the template variable
         'other_user': other_user,
         'ws_url': f"/ws/chat/{room.id}/",
         'meeting_link': '',
