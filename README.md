@@ -1,375 +1,318 @@
-# Job Marketplace Platform
+# 💼 Job Connect - Professional Job Marketplace Platform
 
-A comprehensive Django-based job marketplace connecting job seekers with employers, featuring real-time chat, video interviews, and job application tracking.
+<div align="center">
 
-## 🚀 Features
+![Job Connect](https://img.shields.io/badge/Django-5.2.8-green?style=for-the-badge&logo=django)
+![Channels](https://img.shields.io/badge/Channels-4.3.2-blue?style=for-the-badge)
+![Python](https://img.shields.io/badge/Python-3.x-yellow?style=for-the-badge&logo=python)
+![License](https://img.shields.io/badge/License-MIT-red?style=for-the-badge)
 
-- **Dual User Roles:** Job Seekers and Employers
-- **Job Management:** Post, search, and apply for jobs
-- **Real-time Chat:** WebSocket-based messaging system
-- **Video Interviews:** Schedule and conduct video calls
-- **Application Tracking:** Track job applications with status updates
-- **User Profiles:** Detailed profiles with skills, experience, and location
-- **Saved Jobs:** Bookmark favorite job postings
-- **Interview Scheduling:** Built-in scheduling system
+**A modern, full-featured job marketplace connecting talented job seekers with top employers through real-time communication and intelligent matching.**
 
----
+[Features](#-features) • [Screenshots](#-screenshots) • [Installation](#-installation) • [Usage](#-usage) • [Tech Stack](#-tech-stack)
 
-## 📄 Pages Documentation
-
-### 1. Landing Page
-**Description:** The main entry point of the application. Showcases platform features, call-to-action buttons, and navigation to login/registration.
-
-![Landing Page](Page%20Screenshot/landingpage.JPG)
-
-**Key Features:**
-- Platform overview
-- "Find a Job" / "Post a Job" CTAs
-- Navigation bar
-- Hero section
-
-**User Role:** Public (All)
+</div>
 
 ---
 
-### 2. Choose Role
-**Description:** First step in registration where users select their role (Job Seeker or Employer).
+## 🌟 Features
 
-![Choose Role](Page%20Screenshot/roles%20j-e.JPG)
+### For Job Seekers
+- 🔍 **Advanced Job Search** - Filter by location, category, salary, and experience level
+- 📝 **Easy Applications** - Apply with one click using your saved profile and resume
+- 💾 **Save Jobs** - Bookmark interesting positions for later review
+- 💬 **Real-time Chat** - Message employers directly with instant WebSocket communication
+- 📊 **Application Tracking** - Monitor your application status in real-time
+- 👤 **Professional Profiles** - Showcase skills, experience, education, and portfolio
+- 📄 **Resume Management** - Upload and manage multiple resume versions
 
-**Key Features:**
-- Role selection buttons
-- Role descriptions
-- Next button
+### For Employers
+- 📢 **Job Posting** - Create and manage job listings with rich descriptions
+- 👥 **Applicant Management** - Review, filter, and track all applications
+- ✅ **Application Status** - Update candidates with Pending, Reviewed, Shortlisted, or Rejected status
+- 💬 **Direct Messaging** - Chat with candidates in real-time
+- 📅 **Interview Scheduling** - Schedule and manage video interviews
+- 🎥 **Video Interviews** - Conduct remote interviews with integrated video calling
+- 📈 **Analytics Dashboard** - Track job performance and application metrics
 
-**User Role:** Public (All)
-
----
-
-### 3. Register as Job Seeker
-**Description:** Registration form for job seekers with personal and professional information.
-
-![Seeker Registration](Page%20Screenshot/jseeker%20registration.JPG)
-
-**Key Features:**
-- Full name input
-- Email input
-- Date of birth
-- Location
-- Password setup
-- Profile completion
-
-**User Role:** Public (All)
-
----
-
-### 4. Register as Employer
-**Description:** Registration form for employers with company details and business information.
-
-![Employer Registration](Page%20Screenshot/employer%20registration%20page.JPG)
-
-**Key Features:**
-- Company name
-- Business email
-- Company details
-- Location
-- Password setup
-- Account verification
-
-**User Role:** Public (All)
+### Platform Features
+- 🔐 **Secure Authentication** - Role-based access control (Job Seeker / Employer)
+- ⚡ **Real-time Messaging** - WebSocket-powered chat with message persistence
+- 🎨 **Modern UI/UX** - Professional, responsive design with smooth animations
+- 📱 **Mobile Responsive** - Optimized for all devices and screen sizes
+- 🔔 **Notifications** - Stay updated on applications and messages
+- 🌐 **RESTful Architecture** - Clean, maintainable codebase
 
 ---
 
-### 5. Job Seeker Dashboard
-**Description:** Main hub for job seekers showing overview, recent jobs, and quick access to features.
+## 🚀 Quick Start
 
-![Seeker Dashboard](Page%20Screenshot/jseeker%20dashboard.JPG)
+### Prerequisites
 
-**Key Features:**
-- Profile summary
-- Recent job recommendations
-- Applied jobs count
-- Saved jobs count
-- Quick navigation links
-- Messages preview
+- Python 3.8 or higher
+- pip (Python package manager)
+- Virtual environment (recommended)
 
-**User Role:** Job Seeker
+### Installation
 
----
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/yourusername/Job-connect-sindhi.git
+   cd Job-connect-sindhi
+   ```
 
-### 6. Employer Dashboard
-**Description:** Main hub for employers showing job postings, applications, and analytics.
+2. **Create and activate virtual environment**
+   ```bash
+   # Windows
+   python -m venv venv
+   venv\Scripts\activate
 
-![Employer Dashboard](Page%20Screenshot/e%20dashboard.JPG)
+   # macOS/Linux
+   python3 -m venv venv
+   source venv/bin/activate
+   ```
 
-**Key Features:**
-- Posted jobs overview
-- Recent applications
-- Profile summary
-- Quick actions (Post Job, View Applications)
-- Messages preview
-- Analytics/statistics
+3. **Install dependencies**
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-**User Role:** Employer
+4. **Run database migrations**
+   ```bash
+   python manage.py makemigrations
+   python manage.py migrate
+   ```
 
----
+5. **Create a superuser (admin)**
+   ```bash
+   python manage.py createsuperuser
+   ```
 
-### 7. Search Jobs / All Jobs Page
-**Description:** Browse all available jobs with filtering and search capabilities.
+6. **Collect static files**
+   ```bash
+   python manage.py collectstatic
+   ```
 
-![All Jobs](Page%20Screenshot/seeker%20search%20jobs.JPG)
+7. **Run the development server with WebSocket support**
+   ```bash
+   daphne -b 127.0.0.1 -p 8000 mysite.asgi:application
+   ```
 
-**Key Features:**
-- Job listings
-- Search bar
-- Category filters
-- Location filters
-- Salary range filters
-- Sort options (newest, most relevant)
-- Save job button
-- Quick view option
+8. **Access the application**
+   - Main site: `http://127.0.0.1:8000`
+   - Admin panel: `http://127.0.0.1:8000/admin`
 
-**User Role:** Job Seeker
-
----
-
-### 8. All Jobs Listing
-**Description:** Comprehensive job listing page showing all available positions.
-
-![All Jobs Page](Page%20Screenshot/all%20jobs%20page.JPG)
-
-**Key Features:**
-- Job listings
-- Search bar
-- Category filters
-- Location filters
-- Sort options
-- Save job button
-- Quick view option
-
-**User Role:** Job Seeker
+> **⚠️ Important:** Always use `daphne` to run the server (not `python manage.py runserver`) to enable WebSocket support for real-time chat functionality.
 
 ---
 
-### 9. Apply for Job
-**Description:** Application form for job seekers to submit their interest and resume.
+## 📖 Usage Guide
 
-![Apply Job](Page%20Screenshot/apply%20for%20job.JPG)
+### For Job Seekers
 
-**Key Features:**
-- Resume upload/selection
-- Cover letter textarea
-- Skills highlighting
-- Experience summary
-- Submit application button
-- Preview before submit
+1. **Register** - Click "Find a Job" and create your account
+2. **Complete Profile** - Add your skills, experience, and upload your resume
+3. **Search Jobs** - Browse available positions or use advanced filters
+4. **Apply** - Submit applications with one click
+5. **Chat** - Message employers directly about opportunities
+6. **Track** - Monitor your application status in real-time
 
-**User Role:** Job Seeker
+### For Employers
 
----
-
-### 10. Saved Jobs
-**Description:** List of jobs bookmarked by the seeker for later review.
-
-![Saved Jobs](Page%20Screenshot/saved%20jobs.JPG)
-
-**Key Features:**
-- Saved job listings
-- Remove from saved
-- Job preview
-- Apply directly button
-- Sort/filter options
-
-**User Role:** Job Seeker
+1. **Register** - Click "Post a Job" and create your employer account
+2. **Post Jobs** - Create detailed job listings with requirements
+3. **Review Applications** - View and filter candidate applications
+4. **Manage Status** - Update application status (Pending → Reviewed → Shortlisted → Hired)
+5. **Chat** - Communicate with candidates in real-time
+6. **Schedule Interviews** - Set up video interviews with shortlisted candidates
 
 ---
 
-### 11. Job Seeker Profile
-**Description:** User profile page for job seekers to view and update personal information.
+## 🛠️ Tech Stack
 
-![Seeker Profile](Page%20Screenshot/jseeker%20profile.JPG)
+### Backend
+- **Django 5.2.8** - High-level Python web framework
+- **Django Channels 4.3.2** - WebSocket support for real-time features
+- **Daphne 4.2.1** - ASGI server for WebSocket handling
+- **SQLite** - Database (development)
 
-**Key Features:**
-- Profile picture
-- Personal information
-- Skills section
-- Experience timeline
-- Education details
-- Location and contact
-- Edit profile button
-- Resume management
+### Frontend
+- **HTML5 & CSS3** - Structure and styling
+- **Tailwind CSS** - Utility-first CSS framework
+- **JavaScript (ES6+)** - Interactive functionality
+- **WebSocket API** - Real-time communication
 
-**User Role:** Job Seeker
-
----
-
-### 12. Post a Job (Employer)
-**Description:** Form for employers to create and publish new job postings.
-
-![Post Job](Page%20Screenshot/e%20post%20a%20job.JPG)
-
-**Key Features:**
-- Job title input
-- Description editor
-- Requirements section
-- Salary range
-- Job category selection
-- Location
-- Experience level
-- Job type (Full-time, Part-time, etc.)
-- Preview before publish
-- Save as draft option
-
-**User Role:** Employer
+### Key Features
+- **WebSocket Communication** - Real-time chat with message persistence
+- **ASGI Application** - Asynchronous server gateway interface
+- **Channel Layers** - In-memory channel layer for WebSocket routing
+- **File Upload** - Resume and document management
+- **Authentication** - Django's built-in auth system with role-based access
 
 ---
 
-### 13. Edit Job Post
-**Description:** Form to modify existing job postings.
-
-![Edit Job](Page%20Screenshot/edit%20job%20post.JPG)
-
-**Key Features:**
-- All posting fields editable
-- Delete job option
-- Pause/Resume job posting
-- View applications count
-- Last edited timestamp
-
-**User Role:** Employer
-
----
-
-### 14. Apply for Job Detail
-**Description:** Detailed view of application details and application checking.
-
-![Applicant Application Check](Page%20Screenshot/applicant%20application%20check.JPG)
-
-**Key Features:**
-- Applicant information
-- Application status
-- Resume view
-- Cover letter display
-- Action buttons
-- Interview scheduling option
-
-**User Role:** Employer
-
----
-
-### 15. Employer Job Posting
-**Description:** Employer's view of their job postings and management interface.
-
-![Employer Jobs](Page%20Screenshot/admin%20side%20jobs.JPG)
-
-**Key Features:**
-- Posted jobs list
-- Edit job button
-- Delete job button
-- View applications count
-- Job status
-- Publication date
-
-**User Role:** Employer
-
----
-
-### 16. View Job Applicants
-**Description:** List of applicants for a specific job posting with their details.
-
-![Job Applicants Admin](Page%20Screenshot/job%20applicants%20at%20admin%20side.JPG)
-
-**Key Features:**
-- Applicant list
-- Application status (Pending, Accepted, Rejected)
-- Applicant profile preview
-- Resume view
-- Action buttons (Accept, Reject, Message)
-- Filter by status
-- Sort options
-
-**User Role:** Employer
-
----
-
-### 17. Admin Page
-**Description:** Administrative dashboard and control panel for system management.
-
-![Admin Page](Page%20Screenshot/admin%20page.JPG)
-
-**Key Features:**
-- System overview
-- User management
-- Content management
-- Analytics and reports
-- System settings
-- Moderation tools
-
-**User Role:** Admin
-
----
-
-## 📁 Folder Structure
+## 📁 Project Structure
 
 ```
-mysite/
-├── README.md (this file)
-├── Page Screenshot/
-│   ├── 01_landing.png
-│   ├── 02_login.png
-│   ├── 03_choose_role.png
-│   └── ... (other page screenshots)
-├── jobs/
-│   ├── templates/
-│   ├── static/
-│   ├── migrations/
-│   ├── models.py
-│   ├── views.py
-│   ├── urls.py
-│   └── ...
-├── mysite/
-│   ├── settings.py
-│   ├── urls.py
-│   └── ...
-└── manage.py
+Job-connect-sindhi/
+├── jobs/                          # Main application
+│   ├── templates/                 # HTML templates
+│   │   ├── employer/             # Employer-specific templates
+│   │   │   ├── chat_room.html   # Real-time chat interface
+│   │   │   ├── chat_list.html   # Conversation list
+│   │   │   └── ...
+│   │   ├── seeker/               # Job seeker templates
+│   │   └── ...
+│   ├── static/                    # Static files (CSS, JS, images)
+│   ├── models.py                  # Database models
+│   ├── views.py                   # View functions
+│   ├── urls.py                    # URL routing
+│   ├── consumers.py               # WebSocket consumers
+│   ├── routing.py                 # WebSocket routing
+│   └── forms.py                   # Django forms
+├── mysite/                        # Project configuration
+│   ├── settings.py               # Django settings
+│   ├── urls.py                   # Main URL configuration
+│   ├── asgi.py                   # ASGI configuration
+│   └── wsgi.py                   # WSGI configuration
+├── media/                         # User-uploaded files
+├── staticfiles/                   # Collected static files
+├── Page Screenshot/               # Application screenshots
+├── requirements.txt               # Python dependencies
+├── manage.py                      # Django management script
+└── README.md                      # This file
 ```
 
 ---
 
-## 🛠️ Technology Stack
+## 🔧 Configuration
 
-- **Backend:** Django
-- **Real-time Communication:** Django Channels (WebSockets)
-- **Database:** SQLite (Development)
-- **Frontend:** HTML, CSS, JavaScript
-- **Authentication:** Django User Model
-- **Video:** WebRTC
+### Environment Variables (Optional)
 
----
+Create a `.env` file in the project root:
 
-## 📸 Screenshot Naming Convention
+```env
+DEBUG=True
+SECRET_KEY=your-secret-key-here
+ALLOWED_HOSTS=localhost,127.0.0.1
+DATABASE_URL=sqlite:///db.sqlite3
+```
 
-When adding screenshots, use the following naming format:
+### Channel Layers
 
-`NN_page_name.png`
+The application uses **InMemoryChannelLayer** for development. For production, configure Redis:
 
-- **NN:** Sequential number (01, 02, 03, etc.)
-- **page_name:** Descriptive page identifier in lowercase with underscores
-
-**Examples:**
-- `01_landing.png`
-- `06_seeker_dashboard.png`
-- `19_video_call.png`
-
----
-
-## 📝 Notes
-
-- Add screenshot files to the `Page Screenshot` folder
-- Update screenshot paths in this README if you reorganize files
-- Keep descriptions concise and user-focused
-- Update this README when new pages are added
+```python
+# settings.py
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [("127.0.0.1", 6379)],
+        },
+    },
+}
+```
 
 ---
 
-**Last Updated:** January 3, 2026
+## 🎨 Features in Detail
+
+### Real-time Chat System
+
+The chat system features:
+- ✅ **WebSocket Communication** - Instant message delivery
+- ✅ **Message Persistence** - All chats saved to database
+- ✅ **Typing Indicators** - See when someone is typing
+- ✅ **Online Status** - Real-time presence indicators
+- ✅ **File Attachments** - Share documents and images
+- ✅ **Professional UI** - Gradient design with smooth animations
+- ✅ **Message History** - Access past conversations anytime
+
+### Application Workflow
+
+```mermaid
+graph LR
+    A[Job Posted] --> B[Seeker Applies]
+    B --> C[Employer Reviews]
+    C --> D{Decision}
+    D -->|Interested| E[Shortlist]
+    D -->|Not Suitable| F[Reject]
+    E --> G[Schedule Interview]
+    G --> H[Conduct Interview]
+    H --> I{Final Decision}
+    I -->|Hire| J[Hired]
+    I -->|Decline| F
+```
+
+---
+
+## 🧪 Testing
+
+Run tests with:
+
+```bash
+python manage.py test
+```
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Please follow these steps:
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+---
+
+## 📝 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+## 👥 Authors
+
+- **Faisal Tahseen** - *Initial work* - [YourGitHub](https://github.com/faisaltahseen12)
+
+---
+
+## 🙏 Acknowledgments
+
+- Django community for excellent documentation
+- Tailwind CSS for the utility-first CSS framework
+- Django Channels for WebSocket support
+- All contributors and testers
+
+---
+
+## 📞 Support
+
+For support, email faisaltahseen12@gmail.com or open an issue in the repository.
+
+---
+
+## 🗺️ Roadmap
+
+- [ ] Email notifications for new applications
+- [ ] Advanced analytics dashboard
+- [ ] Resume parsing with AI
+- [ ] Job recommendation algorithm
+- [ ] Mobile app (React Native)
+- [ ] Multi-language support
+- [ ] Payment integration for premium features
+- [ ] Company verification system
+
+---
+
+<div align="center">
+
+**Made with ❤️ using Django**
+
+⭐ Star this repo if you find it helpful!
+
+</div>
