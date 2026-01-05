@@ -42,3 +42,4 @@ psutil==7.2.1
 
 # Deployment helpers
 setuptools==80.9.0
+gunicorn==23.0.0
